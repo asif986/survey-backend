@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const postRoutes = require('./routes/posts');
 const userRoutes = require('./routes/user');
 const projectRotues = require('./routes/project');
+const surveyStoreRoutes = require('./routes/surveyStore');
 
 
 const errorHandle = require('./middleware/error-handling');
@@ -48,13 +49,15 @@ app.get('/', (req, res) => {
 app.use('/api/posts', postRoutes);
 app.use('/api/project', projectRotues);
 app.use('/api/user', userRoutes);
+app.use('/api/surveyStore', surveyStoreRoutes);
+
 
 app.all('*', (req, res, next) => {
    // next(new errorHandler(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
-app.listen(8080, () => {
-    console.log('Server is listenin on PORT :' + PORT);
+app.listen(3000, () => {
+    console.log('Server is listenin on PORT AT :' + PORT);
 })
 
 module.exports = app;
