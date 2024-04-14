@@ -2,8 +2,10 @@
     "name": "mean-course",
     "version": "0.0.0",
         "private": true,
+
+        "main": "index.js",
     "scripts": {
-        "start": "node server.js",
+        "start": "nodemon index.js",
         "dev": "nodemon server.js"
 
     },
@@ -20,5 +22,6 @@
     },
     "engines": {
         "node": "18.16.0"
+
     }
 }
