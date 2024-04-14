@@ -25,7 +25,23 @@ exports.createProject = (req, res, next) => {
 exports.getProjectsById = (req, res, next) => {
 
     console.log(req.params);
-    Project.find({ user_id: req.params.id }).then(doc => {
+    Project.find({ user_id: req.params.id ,project_status:'In Progress'}).then(doc => {
+        if (doc) {
+            res.status(200).json(doc);
+        } else {
+            res.status(200).json({ message: 'Projects not found' })
+        }
+    }).catch(e => {
+        res.status(401).json({
+            message: 'Something went wrong'
+        });
+    })
+}
+
+exports.getCompletedProjectsById = (req, res, next) => {
+
+    console.log(req.params);
+    Project.find({ user_id: req.params.id ,project_status:'Completed'}).then(doc => {
         if (doc) {
             res.status(200).json(doc);
         } else {
