@@ -8,5 +8,7 @@ const router = express.Router();
 router.post("",ProjectController.createProject);
 
 router.get("/:id", ProjectController.getProjectsById);
+router.get("/completedProject/:id", ProjectController.getCompletedProjectsById);
+
 
 module.exports = router;
