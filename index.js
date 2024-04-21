@@ -13,7 +13,7 @@ const errorHandle = require('./middleware/error-handling');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-// app.use(express.json());
+app.use(express.json());
 
 //process.env.MONGO_ATLAS_PS
 mongoose
