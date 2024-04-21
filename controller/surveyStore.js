@@ -3,7 +3,7 @@ const Project = require("../models/project");
 
 
 exports.createSurveyStore = (req, res, next) => {
-    console.log(req.body);
+    // console.log(req.body);
     const surveyStore = new SurveyStore({
         ...req.body
     });
@@ -21,6 +21,23 @@ exports.createSurveyStore = (req, res, next) => {
                 surveystore
             
         });
+    }).catch(e => {
+        console.log(e)
+        res.status(401).json({
+            message: 'Something went wrong'
+        });
+    })
+}
+
+exports.getCompletedSurveyByProjectId = (req, res, next) => {
+
+    console.log(req.params);
+    SurveyStore.findOne({ project_id: req.params.id }).then(doc => {
+        if (doc) {
+            res.status(200).json(doc);
+        } else {
+            res.status(200).json({ message: 'Survey report not found' })
+        }
     }).catch(e => {
         res.status(401).json({
             message: 'Something went wrong'
