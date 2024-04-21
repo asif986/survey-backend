@@ -13,7 +13,7 @@ const errorHandle = require('./middleware/error-handling');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(express.json());
+// app.use(express.json());
 
 //process.env.MONGO_ATLAS_PS
 mongoose
@@ -26,7 +26,8 @@ mongoose
         console.log("Connection failed!" + e);
     });
 
-app.use(bodyParser.json());
+ app.use(bodyParser.json({ limit: "50mb" }))
+ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
 // app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/images", express.static(path.join("backend/images")));
 app.use((req, res, next) => {
