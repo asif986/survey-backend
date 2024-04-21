@@ -9,13 +9,12 @@ exports.createProject = (req, res, next) => {
     project.save().then(createdProject => {
         res.status(201).json({
             message: "Project added successfully",
-            post: {
+            project: {
                 ...createdProject,
-                postId: createdProject._id
-
             }
         });
     }).catch(e => {
+        console.log(e)
         res.status(401).json({
             message: 'Something went wrong'
         });
