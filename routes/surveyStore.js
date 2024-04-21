@@ -7,6 +7,9 @@ const router = express.Router();
 // checkAuth
 router.post("",SurveyController.createSurveyStore);
 
+router.get("/:id", SurveyController.getCompletedSurveyByProjectId);
+
 // router.get("/:id", SurveyController.getProjectsById);
 
 module.exports = router;
+
