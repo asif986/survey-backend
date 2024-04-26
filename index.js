@@ -20,7 +20,7 @@ app.use(express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 5000
 //process.env.MONGO_ATLAS_PS
 mongoose
     .connect(
-        "mongodb+srv://asifmulla166037:" +'3iPCat5n1BFqjCQ3'+ "@cluster0.mxgkxd1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", { useNewUrlParser: true, useUnifiedTopology: true,socketTimeoutMS: 30000  })
+        "mongodb+srv://asifmulla166037:" +'3iPCat5n1BFqjCQ3'+ "@cluster0.mxgkxd1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", { socketTimeoutMS: 30000  })
     .then(() => {
         console.log("Connected to database!");
     })
