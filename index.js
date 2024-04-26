@@ -20,6 +20,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 
 
+ app.use(bodyParser.json())
+//  app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
+app.use(bodyParser.urlencoded({ extended: false }));
+
 //process.env.MONGO_ATLAS_PS
 
 
