@@ -13,12 +13,14 @@ const errorHandle = require('./middleware/error-handling');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(express.json());
+app.use(express.json( {limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
+
 
 //process.env.MONGO_ATLAS_PS
 mongoose
     .connect(
-        "mongodb+srv://asifmulla166037:" +'3iPCat5n1BFqjCQ3'+ "@cluster0.mxgkxd1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", { useNewUrlParser: true, useUnifiedTopology: true,maxTimeMS: 30000  })
+        "mongodb+srv://asifmulla166037:" +'3iPCat5n1BFqjCQ3'+ "@cluster0.mxgkxd1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", { useNewUrlParser: true, useUnifiedTopology: true,socketTimeoutMS: 30000  })
     .then(() => {
         console.log("Connected to database!");
     })
@@ -26,8 +28,8 @@ mongoose
         console.log("Connection failed!" + e);
     });
 
- app.use(bodyParser.json({ limit: "50mb" }))
- app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
+//  app.use(bodyParser.json({ limit: "50mb" }))
+//  app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
 // app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/images", express.static(path.join("backend/images")));
 app.use((req, res, next) => {
