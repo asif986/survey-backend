@@ -26,7 +26,7 @@ app.use(express.urlencoded({extended: true}))
 mongoose
     .connect(
         "mongodb+srv://asifmulla166037:" +'3iPCat5n1BFqjCQ3'+ "@cluster0.mxgkxd1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", { useUnifiedTopology: true,
-        useNewUrlParser: true,})
+        useNewUrlParser: true, useCreateIndex:true})
     .then(() => {
         console.log("Connected to database!");
     })
