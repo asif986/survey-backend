@@ -32,10 +32,10 @@ exports.createNewUser = (req, res, next) => {
 
 }
 
-exports.loin = (req, res, next) => {
+exports.loin = async (req, res, next) => {
     let fetchedUser;
     console.log(req.body);
-    User.findOne({ user_id: req.body.user_id }).then(user => {
+   await User.findOne({ user_id: req.body.user_id }).then(user => {
         console.log(user);
         if (!user) {
             return res.status(401).json({
