@@ -13,14 +13,17 @@ const errorHandle = require('./middleware/error-handling');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(express.json( {limit: "50mb" }));
-app.use(express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
+// app.use(express.json( {limit: "50mb" }));
+// app.use(express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
+
+app.use(express.json());
+app.use(express.urlencoded({extended: true}))
 
 
 //process.env.MONGO_ATLAS_PS
 mongoose
     .connect(
-        "mongodb+srv://asifmulla166037:" +'3iPCat5n1BFqjCQ3'+ "@cluster0.mxgkxd1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", { socketTimeoutMS: 30000  })
+        "mongodb+srv://asifmulla166037:" +'3iPCat5n1BFqjCQ3'+ "@cluster0.mxgkxd1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", { useNewUrlParser: true, useUnifiedTopology: true  })
     .then(() => {
         console.log("Connected to database!");
     })
