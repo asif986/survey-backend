@@ -21,9 +21,12 @@ app.use(express.urlencoded({extended: true}))
 
 
 //process.env.MONGO_ATLAS_PS
+
+
 mongoose
     .connect(
-        "mongodb+srv://asifmulla166037:" +'3iPCat5n1BFqjCQ3'+ "@cluster0.mxgkxd1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", { useNewUrlParser: true, useUnifiedTopology: true  })
+        "mongodb+srv://asifmulla166037:" +'3iPCat5n1BFqjCQ3'+ "@cluster0.mxgkxd1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", { useUnifiedTopology: true,
+        useNewUrlParser: true,})
     .then(() => {
         console.log("Connected to database!");
     })
