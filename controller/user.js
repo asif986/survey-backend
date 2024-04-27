@@ -21,11 +21,11 @@ exports.createNewUser = (req, res, next) => {
 
         }).catch(err => {
 
-                if(err.name =='ValidationError'){
-                    err.message ='User Already Exists.'
-                }
+                // if(err.name =='ValidationError'){
+                //     err.message ='User Already Exists.'
+                // }
             res.status(500).json({
-               message:err.message
+               message:err
             });
         })
     })
