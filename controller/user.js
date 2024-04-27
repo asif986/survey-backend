@@ -5,6 +5,12 @@ const jwt = require('jsonwebtoken');
 exports.createNewUser = (req, res, next) => {
 
     console.log(req.body);
+        return res.status(200).json({
+            token: 'token',
+            user_id:'asif',
+            expiresIn: 3600
+        })
+    
     bcrypt.hash(req.body.password, 10).then(hash => {
 
         const user = new User({
@@ -35,12 +41,6 @@ exports.createNewUser = (req, res, next) => {
 exports.loin = async (req, res, next) => {
     let fetchedUser;
     console.log(req.body);
-    return res.status(200).json({
-            token: 'token',
-            user_id:'asif',
-            expiresIn: 3600
-        })
-    
    await User.findOne({ user_id: req.body.user_id }).then(user => {
         console.log(user);
         if (!user) {
