@@ -5,12 +5,6 @@ const jwt = require('jsonwebtoken');
 exports.createNewUser = (req, res, next) => {
 
     console.log(req.body);
-        return res.status(200).json({
-            token: 'token',
-            user_id:'asif',
-            expiresIn: 3600
-        })
-    
     bcrypt.hash(req.body.password, 10).then(hash => {
 
         const user = new User({
