@@ -24,18 +24,18 @@ exports.createNewUser = (req, res, next) => {
                 if(err.name =='ValidationError'){
                     err.message ='User Already Exists.'
                 }
-            res.status(500).json({
-               message:err
+            res.status(401).json({
+               message:err.message
             });
         })
     })
 
 }
 
-exports.loin = async (req, res, next) => {
+exports.loin =  (req, res, next) => {
     let fetchedUser;
     console.log(req.body);
-   await User.findOne({ user_id: req.body.user_id }).then(user => {
+    User.findOne({ user_id: req.body.user_id }).then(user => {
         console.log(user);
         if (!user) {
             return res.status(401).json({
