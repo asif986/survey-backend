@@ -35,6 +35,7 @@ mongoose
         console.log("Connected to database!");
     })
     .catch((e) => {
+        console.log(e);
         console.log("Connection failed!" + e);
     });
 
