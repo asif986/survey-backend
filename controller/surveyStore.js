@@ -16,7 +16,7 @@ exports.createSurveyStore = (req, res, next) => {
         });
 
         res.status(201).json({
-            message: "Survey Completed",
+            message: "Survey Completed Successfully.",
             
                 surveystore
             
