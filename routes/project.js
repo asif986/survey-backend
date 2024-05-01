@@ -7,8 +7,16 @@ const router = express.Router();
 // checkAuth
 router.post("",ProjectController.createProject);
 
-router.get("/:id", ProjectController.getProjectsById);
+router.get("/district", ProjectController.getDistrict);
+
+router.get("/taluka/:id", ProjectController.getTalukaByDistrictId);
+
+router.get("/:id", ProjectController.getProjectsByUserId);
+
 router.get("/completedProject/:id", ProjectController.getCompletedProjectsById);
+
+router.delete("/:id", ProjectController.deleteProject);
+
 
 
 module.exports = router;
