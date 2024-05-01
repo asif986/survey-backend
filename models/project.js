@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const projectSchema = mongoose.Schema({
     scheme_name: { type: String, required: true },
-    distrct: { type: String, required: true },
-    talkua: { type: String, required: true },
+    distrct_id: { type: String, required: true },
+    taluka_id: { type: String, required: true },
     village_name: { type: String, required: true },
     saction_year: { type: String, required: true },
     source: { type: String, required: true },
