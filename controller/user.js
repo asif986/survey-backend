@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { use } = require('../routes/user');
 
 exports.createNewUser = (req, res, next) => {
 
@@ -66,3 +67,29 @@ exports.loin =  (req, res, next) => {
         });
     })
 }
+
+
+exports.getUserInformation =  (req, res, next) => {
+   
+    User.findOne({ _id: req.params.id }).then(user => { 
+
+        if (!user) {
+            return res.status(401).json({
+                message: 'User Not Exists'
+            })
+        }
+         user.password= undefined;
+        console.log(user)
+        return user
+    }).then(result => {
+        res.status(200).json(
+            result
+        )
+
+    }).catch(e => {
+        res.status(401).json({
+            message: 'Something went wrong'
+        });
+    })
+}
+
