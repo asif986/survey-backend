@@ -1,6 +1,6 @@
 const path = require("path");
 const express = require("express");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const postRoutes = require('./routes/posts');
