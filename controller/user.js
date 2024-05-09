@@ -37,8 +37,7 @@ exports.loin =  (req, res, next) => {
     let fetchedUser;
     console.log(req.body);
     User.findOne({ user_id: req.body.user_id }).then(user => {
-        console.log(user);
-        if (!user) {
+        if (user == null) {
             return res.status(401).json({
                 message: 'User Not Exists'
             })
@@ -55,16 +54,17 @@ exports.loin =  (req, res, next) => {
         const token = jwt.sign({ email: fetchedUser.user_id, userId: fetchedUser._id },'survey123' , {
             expiresIn: "1hr",
         });
-        res.status(200).json({
+       return res.status(200).json({
             token: token,
             user_id:fetchedUser._id,
             expiresIn: 3600
         })
 
     }).catch(e => {
-        res.status(401).json({
-            message: 'Auth failed'
-        });
+        // console.log('e',e)
+    //    return res.status(401).json({
+    //         message: 'Auth failed'
+    //     });
     })
 }
 
