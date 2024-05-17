@@ -29,10 +29,10 @@ exports.createSurveyStore = (req, res, next) => {
     })
 }
 
-exports.getCompletedSurveyByProjectId = (req, res, next) => {
+exports.getCompletedSurveyByProjectId = async (req, res, next) => {
 
     console.log(req.params);
-    SurveyStore.findOne({ project_id: req.params.id }).then(doc => {
+   await SurveyStore.findOne({ project_id: req.params.id }).then(doc => {
         if (doc) {
             res.status(200).json(doc);
         } else {
