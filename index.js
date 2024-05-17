@@ -7,6 +7,7 @@ const postRoutes = require('./routes/posts');
 const userRoutes = require('./routes/user');
 const projectRotues = require('./routes/project');
 const surveyStoreRoutes = require('./routes/surveyStore');
+const filesRoutes = require('./routes/files');
 
 
 const errorHandle = require('./middleware/error-handling');
@@ -17,7 +18,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb'}));
 
-// app.use(bodyParser.json({ limit: "50mb" }))
+//  app.use(bodyParser.json({ limit: "50mb" }))
 //  app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
 
 //process.env.MONGO_ATLAS_PS
@@ -58,6 +59,7 @@ app.use('/api/posts', postRoutes);
 app.use('/api/project', projectRotues);
 app.use('/api/user', userRoutes);
 app.use('/api/surveyStore', surveyStoreRoutes);
+app.use('/api/file', filesRoutes);
 
 
 app.all('*', (req, res, next) => {
