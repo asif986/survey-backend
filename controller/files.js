@@ -36,10 +36,10 @@ exports.deleteFile = (req, res, next) => {
     })
 }
 
-exports.getAllFilesForProject = (req, res, next) => {
+exports.getAllFilesForProject = async (req, res, next) => {
 
     console.log(req.params);
-    Files.find({ project_id: req.params.id }).then(doc => {
+  await  Files.find({ project_id: req.params.id }).then(doc => {
         if (doc) {
             res.status(200).json(doc);
         } else {
