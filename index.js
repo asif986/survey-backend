@@ -54,7 +54,9 @@ app.use((req, res, next) => {
 app.get('/favicon.ico', function(req, res) { 
     res.sendStatus(204); 
 });
-
+app.get('/favicon.png', function(req, res) { 
+    res.sendStatus(204); 
+});
 app.get('/', (req, res) => {
     res.send('API Running');
 });
