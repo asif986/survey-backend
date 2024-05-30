@@ -1,6 +1,7 @@
 
 const Project = require("../models/project");
 const District = require("../models/district");
+const Components = require("../models/components");
 const Taluka = require("../models/taluka");
 const mongoose = require('mongoose');
 const {Types: {ObjectId}} = mongoose;
@@ -36,6 +37,7 @@ exports.getProjectsByUserId = (req, res, next) => {
             message: 'User not found'
         });
       }
+      
       Project.aggregate(
         [
             {
@@ -199,6 +201,7 @@ exports.getDistrict = (req, res, next) => {
         });
     })
 }
+
 exports.getTalukaByDistrictId = (req, res, next) => {
     console.log(req.params);
     Taluka.find({district_id: req.params.id }).then(doc => {
@@ -213,6 +216,21 @@ exports.getTalukaByDistrictId = (req, res, next) => {
         });
     })
 }
+
+exports.getComponents = (req, res, next) => {
+  Components.find().then(doc => {
+      if (doc) {
+          res.status(200).json(doc);
+      } else {
+          res.status(200).json({ message: 'Components not found' })
+      }
+  }).catch(e => {
+      res.status(401).json({
+          message: 'Something went wrong'
+      });
+  })
+}
+
 
 exports.deleteProject = (req, res, next) => {
     Project.deleteOne({ _id: req.params.id }).then(result => {
