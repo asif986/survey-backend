@@ -29,7 +29,7 @@ exports.createProject = (req, res, next) => {
     })
 }
 
-exports.getProjectsByUserId = (req, res, next) => {
+exports.getProjectsByUserId =  async (req, res, next) => {
 
     if (!validateObjectId(req.params.id)) {
         // throw Error("Invalid object Id")
@@ -38,7 +38,7 @@ exports.getProjectsByUserId = (req, res, next) => {
         });
       }
       
-      Project.aggregate(
+     await Project.aggregate(
         [
             {
                 $match: {
