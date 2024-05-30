@@ -3,7 +3,7 @@ const express = require("express");
 // const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const postRoutes = require('./routes/posts');
+//const postRoutes = require('./routes/posts');
 const userRoutes = require('./routes/user');
 const projectRotues = require('./routes/project');
 const surveyStoreRoutes = require('./routes/surveyStore');
@@ -61,7 +61,7 @@ app.get('/', (req, res) => {
     res.send('API Running');
 });
 
-app.use('/api/posts', postRoutes);
+//app.use('/api/posts', postRoutes);
 app.use('/api/project', projectRotues);
 app.use('/api/user', userRoutes);
 app.use('/api/surveyStore', surveyStoreRoutes);
